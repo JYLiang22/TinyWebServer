@@ -18,6 +18,7 @@
 ## 各模块介绍
 
 [线程池](src/threadpool/readme.md)<br>
+[数据库连接池](src/sqlconnectpool/readme.md)<br>
 
 
 ## 项目运行
