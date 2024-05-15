@@ -15,6 +15,7 @@
 
 class ThreadPool{
 private:
+    // 使用结构体保存线程池内部状态
     struct Pool{
         std::mutex mtx;                             // 互斥量
         std::condition_variable cond;               // 条件变量
