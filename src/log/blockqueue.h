@@ -6,20 +6,21 @@
 #ifndef _BLOCKQUEUE_H_
 #define _BLOCKQUEUE_H_
 
-#include<mutex>
-#include<deque>
-#include<condition_variable>
-#include<sys/time.h>
+#include <mutex>
+#include <deque>
+#include <condition_variable>
+#include <sys/time.h>
 
+// Template class for a thread-safe blocking queue
 template<typename T>
-class BlockQueue{
+class BlockQueue {
 private:
-    std::deque<T> deq;
-    size_t capacity;
-    std::mutex mtx;
-    bool isClose;
-    std::condition_variable conConsumer;
-    std::condition_variable conProducer;
+    std::deque<T> deq; // Deque to store elements
+    size_t capacity; // Maximum capacity of the queue
+    std::mutex mtx; // Mutex for thread safety
+    bool isClose; // Flag to indicate if the queue is closed
+    std::condition_variable conConsumer; // Condition variable for consumers
+    std::condition_variable conProducer; // Condition variable for producers
 
 public:
     explicit BlockQueue(size_t maxCapacity = 1000);
