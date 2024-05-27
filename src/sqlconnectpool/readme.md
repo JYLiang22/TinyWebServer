@@ -49,5 +49,6 @@
    - [我给面试官讲解了单例模式后，他对我竖起了大拇指！](https://blog.csdn.net/weixin_41949328/article/details/107296517?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171575389116800180696112%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=171575389116800180696112&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-107296517-null-null.142^v100^control&utm_term=%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F&spm=1018.2226.3001.4187)
 3. sem
    - [线程同步机制封装类](https://mp.weixin.qq.com/s?__biz=MzAxNzU2MzcwMw==&mid=2649274278&idx=3&sn=5840ff698e3f963c7855d702e842ec47&chksm=83ffbefeb48837e86fed9754986bca6db364a6fe2e2923549a378e8e5dec6e3cf732cdb198e2&scene=0&xtrack=1#rd)
+   - [信号量 Semaphore 及 C++ 11 实现](https://zhuanlan.zhihu.com/p/512969481)
 4. C++操作MySQL
    - [C/C++ 使用 MySQL API 操作 数据库](https://juejin.cn/post/7141190286838857735)
