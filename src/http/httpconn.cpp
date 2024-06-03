@@ -109,13 +109,13 @@ int HttpConn::getPort() const {
 
 // Process the HTTP request and prepare the response
 bool HttpConn::process() {
-    request.init();  // Initialize the request
+    request.Init();  // Initialize the request
     if (readBuff.readableBytes() <= 0) {
         return false;  // No data to process
     } else if (request.parse(readBuff)) {
         // If the request was successfully parsed
         LOG_DEBUG("%s", request.path().c_str());
-        response.init(srcDir, request.path(), request.isKeepAlive(), 200);  // Initialize a successful response
+        response.init(srcDir, request.path(), request.IsKeepAlive(), 200);  // Initialize a successful response
     } else {
         response.init(srcDir, request.path(), false, 400);  // Initialize an error response
     }
@@ -142,5 +142,5 @@ int HttpConn::toWriteBytes() {
 
 // Check if the connection should be kept alive
 bool HttpConn::isKeepAlive() const {
-    return request.isKeepAlive();
+    return request.IsKeepAlive();
 }
