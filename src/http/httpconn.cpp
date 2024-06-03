@@ -78,7 +78,7 @@ ssize_t HttpConn::write(int *saveErrno) {
 
 // Close the connection
 void HttpConn::Close() {
-    response.unmapFile();  // Unmap the file associated with the response
+    response.UnmapFile();  // Unmap the file associated with the response
     if (!isClose) {
         isClose = true;  // Mark the connection as closed
         --userCnt;  // Decrement the user count
@@ -115,23 +115,23 @@ bool HttpConn::process() {
     } else if (request.parse(readBuff)) {
         // If the request was successfully parsed
         LOG_DEBUG("%s", request.path().c_str());
-        response.init(srcDir, request.path(), request.IsKeepAlive(), 200);  // Initialize a successful response
+        response.Init(srcDir, request.path(), request.IsKeepAlive(), 200);  // Initialize a successful response
     } else {
-        response.init(srcDir, request.path(), false, 400);  // Initialize an error response
+        response.Init(srcDir, request.path(), false, 400);  // Initialize an error response
     }
 
-    response.makeResponse(writeBuff);  // Create the response and write it to the buffer
+    response.MakeResponse(writeBuff);  // Create the response and write it to the buffer
     iov[0].iov_base = const_cast<char*>(writeBuff.peek());  // Set the first iovec to the write buffer data
     iov[0].iov_len = writeBuff.readableBytes();
     iovCnt = 1;
 
-    if (response.fileLen() > 0 && response.File()) {
+    if (response.FileLen() > 0 && response.File()) {
         // If there is a file to be sent as part of the response
         iov[1].iov_base = response.File();
-        iov[1].iov_len = response.fileLen();
+        iov[1].iov_len = response.FileLen();
         iovCnt = 2;
     }
-    LOG_DEBUG("filesize:%d, %d to %d", response.fileLen(), iovCnt, toWriteBytes());
+    LOG_DEBUG("filesize:%d, %d to %d", response.FileLen(), iovCnt, toWriteBytes());
     return true;
 }
 
