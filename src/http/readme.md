@@ -30,3 +30,10 @@ HttpConn 类负责以下职责：<br>
 - userCnt：活动用户数量的原子计数器。
 
 此代码旨在有效处理多个 HTTP 连接，利用缓冲区管理、分散-聚集 I/O 和连接生命周期管理来确保正确处理客户端请求和服务器响应。
+
+
+# 前置知识和框架可参考
+
+1. [最新版Web服务器项目详解 - 04 http连接处理（上）](https://mp.weixin.qq.com/s/BfnNl-3jc_x5WPrWEJGdzQ)
+2. [最新版Web服务器项目详解 - 05 http连接处理（中）](https://mp.weixin.qq.com/s/wAQHU-QZiRt1VACMZZjNlw)
+3. [最新版Web服务器项目详解 - 06 http连接处理（下）](https://mp.weixin.qq.com/s/451xNaSFHxcxfKlPBV3OCg)
