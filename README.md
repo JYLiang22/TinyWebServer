@@ -1,5 +1,8 @@
 # TinyWebServer
 
+参考[https://github.com/qinguoyi/TinyWebServer](https://github.com/qinguoyi/TinyWebServer), [https://github.com/markparticle/WebServer](https://github.com/markparticle/WebServer)<br>
+跟着写了一遍，但是没有完全上传过来。看这个项目是为了后面的协程库打基础的！<br>
+
 
 ## 功能
 
@@ -23,12 +26,6 @@
 [日志系统](src/log/readme.md)<br>
 [定时器](src/timer/readme.md)<br>
 [http连接请求响应](src/http/readme.md)<br>
-
-
-## 项目运行
-
-
-## demo演示
 
 
 ## 单元测试
