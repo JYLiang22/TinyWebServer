@@ -1,12 +1,11 @@
-# TinyWebServer
+# 参考
 
-参考：
 1. [https://github.com/qinguoyi/TinyWebServer](https://github.com/qinguoyi/TinyWebServer)
 2. [https://github.com/markparticle/WebServer](https://github.com/markparticle/WebServer)
 3. [https://github.com/zhongluqiang/sylar-from-scratch](https://github.com/zhongluqiang/sylar-from-scratch)
 
 
-## 功能
+# TinyWebServer
 
 
 ## 基础知识
