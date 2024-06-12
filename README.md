@@ -46,6 +46,7 @@
 
 ## ucontext族函数
 
-正式开始编写协程库前，需要了解Linux下的ucontext族函数，具体可参考:
+正式开始编写协程库前，需要了解Linux下的ucontext族函数，并基于函数实现一个简单的协程库。
+
 1. [ucontext-人人都可以实现的简单协程库](https://developer.aliyun.com/article/52886)
 2. [代码实现](WebServer-master/corolib)
