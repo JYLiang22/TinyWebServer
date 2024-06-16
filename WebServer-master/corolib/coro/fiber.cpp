@@ -73,7 +73,8 @@ Fiber::ptr Fiber::GetThis(){
     return t_fiber->shared_from_this();
 }
 
-Fiber::Fiber(std::function<void()> cb, size_t stacksize) : m_id(s_fiber_id++), m_cb(cb){
+Fiber::Fiber(std::function<void()> cb, size_t stacksize, bool run_in_scheduler)
+     : m_id(s_fiber_id++), m_cb(cb), m_runInScheduler(run_in_scheduler){
     ++s_fiber_count;
     m_stacksize = (stacksize ? stacksize : DEFAULT_STACK_SIZE);
     m_stack = StackAllocator::Alloc(m_stacksize);
@@ -141,9 +142,23 @@ void Fiber::resume(){
     SetThis(this);
     m_state = RUNNING;
 
-    if(swapcontext(&(t_thread_fiber->m_ctx), &m_ctx)){
-        printf("Fiber::resume() swapcontext failed\n");
-        return;
+    // if(swapcontext(&(t_thread_fiber->m_ctx), &m_ctx)){
+    //     printf("Fiber::resume() swapcontext failed\n");
+    //     return;
+    // }
+
+    // 如果协程参与调度器调度，那么应该和调度器的主协程进行swap，而不是线程主协程
+    if(m_runInScheduler){
+        if(swapcontext(&(Scheduler::GetMainFiber()->m_ctx), &m_ctx)){
+            printf("Fiber::resume() runInScheduler swapcontext failed\n");
+            return;
+        }
+    }
+    else{
+        if(swapcontext(&(t_thread_fiber->m_ctx), &m_ctx)){
+            printf("Fiber::resume() not runInScheduler swapcontext failed\n");
+            return;
+        }
     }
 }
 
@@ -154,9 +169,22 @@ void Fiber::yield(){
         m_state == READY;
     }
 
-    if(swapcontext(&m_ctx, &(t_thread_fiber->m_ctx))){
-        printf("Fiber::yield() swapcontext failed\n");
-        return;
+    // if(swapcontext(&m_ctx, &(t_thread_fiber->m_ctx))){
+    //     printf("Fiber::yield() swapcontext failed\n");
+    //     return;
+    // }
+    // 如果协程参与调度器调度，那么应该和调度器的主协程进行swap，而不是线程主协程
+    if(m_runInScheduler){
+        if(swapcontext(&m_ctx, &(Scheduler::GetMainFiber()->m_ctx))){
+            printf("Fiber::yield() runInScheduler swapcontext failed\n");
+            return;
+        }
+    }
+    else{
+        if(swapcontext(&m_ctx, &(t_thread_fiber->m_ctx))){
+            printf("Fiber::yield() not runInScheduler swapcontext failed\n");
+            return;
+        }
     }
 }
 

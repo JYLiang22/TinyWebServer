@@ -48,8 +48,9 @@ public:
      * @brief 构造函数，用于创建用户协程
      * @param[in] cb 协程入口函数
      * @param[in] stacksize 栈大小
+     * @param[in] run_in_scheduler 本协程是否参与调度器调度，默认为true
     */
-    Fiber(std::function<void()> cb, size_t stacksize = 0);
+    Fiber(std::function<void()> cb, size_t stacksize = 0, bool run_in_scheduler = true);
 
     /*
      * @brief 析构函数
@@ -126,6 +127,8 @@ private:
     void *m_stack = nullptr;
     /// 协程入口函数
     std::function<void()> m_cb;
+    /// 协程是否参与调度器调度
+    bool m_runInScheduler;
 };
 
 }   // namespace coro
