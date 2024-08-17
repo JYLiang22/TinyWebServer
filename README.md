@@ -15,6 +15,11 @@
 [4 Linux网络编程](<project/Linux高并发服务器开发/4 Linux网络编程/笔记.md>)<br>
 
 
+## 框架图
+
+![Alt text](project/Linux%E9%AB%98%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6%E5%88%86%E6%9E%90/image/webserver%E6%A1%86%E6%9E%B6%E5%9B%BE.png)<br>
+
+
 ## 各模块介绍
 
 [线程池&数据库连接池](WebServer-master/code/pool/readme.md)<br>
